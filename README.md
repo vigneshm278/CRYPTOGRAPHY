@@ -1,4 +1,6 @@
-# CRYPTOGRAPHY
+# HILL CIPHER
+## Name: VIGNESH M
+## Reg: 212223240176
 HILL CIPHER
 EX. NO: 1(C) AIM:
  
@@ -29,7 +31,38 @@ STEP-4: Multiply the two matrices to obtain the cipher text of length three.
 STEP-5: Combine all these groups to get the complete cipher text.
 
 ## PROGRAM 
+```
+import numpy as np
 
+def hill_cipher_encrypt_decrypt():
+    a = np.array([[6, 24, 1], [13, 16, 10], [20, 17, 15]])  # Encryption key matrix
+    b = np.array([[8, 5, 10], [21, 8, 21], [21, 12, 8]])   # Decryption key matrix
+    
+    msg = input("Enter plain text (3 characters): ").upper()
+    if len(msg) != 3:
+        print("Error: Please enter exactly 3 characters.")
+        return
+    
+    c = np.array([ord(char) - 65 for char in msg])  # Convert to numerical values
+    print("Plaintext Numerical Values:", c)
+    
+    # Encryption
+    d = np.dot(a, c) % 26  # Multiply and mod 26
+    encrypted_text = ''.join(chr(num + 65) for num in d)
+    print("Encrypted Cipher Text:", encrypted_text)
+    
+    # Decryption
+    decrypted_values = np.dot(b, d) % 26
+    decrypted_text = ''.join(chr(num + 65) for num in decrypted_values)
+    print("Decrypted Cipher Text:", decrypted_text)
+
+if __name__ == "__main__":
+    hill_cipher_encrypt_decrypt()
+```
 ## OUTPUT
+![WhatsApp Image 2025-03-27 at 09 12 40_1001e67e](https://github.com/user-attachments/assets/7bfdb207-2d89-47e3-8a2b-7030e2875cfd)
 
-## RESULT
+
+## RESULT :
+
+   The program Hill cipher is successfully implented.
